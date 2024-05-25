@@ -17,7 +17,7 @@
     </head>
     <body class="antialiased">
             <hr>
-            <h1 class="text-center">Gui trabalhando!</h1>
+            <h1 class="text-center">Guilherme trabalhando!</h1>
     </body>
 </html>
 
