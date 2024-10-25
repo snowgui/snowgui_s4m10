@@ -8,6 +8,8 @@ use App\Http\Controllers\CDHLang\CDHLangController;
 use App\Http\Controllers\CDHSo\CDHSoController;
 use App\Http\Controllers\CodeHelper\CodeHelperController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Book\BookController;
+use App\Http\Controllers\CDHTool\CDHToolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,5 +55,7 @@ Route::prefix('s4m01')->middleware('auth')->group(function () {
     Route::resource('CDHTool', CDHToolController::class);
 
     Route::resource('CDHSo', CDHSoController::class);
+
+    Route::resource('Book', BookController::class);
 
 });

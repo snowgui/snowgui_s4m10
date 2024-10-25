@@ -141,7 +141,8 @@ class UserController extends Controller{
 
         $data = $request->all();
         $user = User::find($id);
-    
+        
+
         if($data['password'] == $user->password) unset($data['password']);
     
         if(isset($data['password'])) $data['password'] = bcrypt($data['password']);
@@ -157,25 +158,20 @@ class UserController extends Controller{
                 $x = (int) $img->x;
                 $y = (int) $img->y;
 
-                if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-
-                    $upload = Image::make($data['foto'])->crop($w, $h, $x, $y)->encode('data-url');
-    
-                    $upload = (object) $upload;
-    
-                    $src = $upload->encoded;
-                                        
-                    $data['foto'] = $src;
+                if ($request->file('foto')->isValid()) {
+                    
+                    $data['foto'] = Image::make($data['foto'])->crop($w, $h, $x, $y)->encode('data-url')->encoded;
     
                 }
             }
-         
+        
 
         }else{
 
             $data['foto'] = '';
         }
-
+        
+       
         $user->update($data);
     
         return redirect()->route('user.edit', $id)->with('updated', true); 

@@ -98,6 +98,11 @@
                             <li><a class="subitens {{request()->routeIs('CDHSo.*') ? 'menu_sub' : ''}}" href="{{route("CDHSo.index")}}">SO CDH</a> </li>
                             
                         </ul>
+
+                        <li class="{{request()->routeIs('Book.*') ? 'active' : ''}}">
+                            <a href="{{route("Book.index")}}"><i class="fa fa-book"></i> <span class="nav-label">Books</span></a>
+                        </li>
+
                     </li>                                    
                                                
 <!--                 
