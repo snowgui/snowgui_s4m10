@@ -59,6 +59,16 @@ class CDHFrameworkController extends Controller
 
     public function destroy($id)
     {
-        //
+        try{
+            Framework::find($id)->delete();
+            return redirect()->route('CDHFramework.index')->with('destroyed', true);
+        }catch(\Exception $ex)
+        {
+            $error = $ex->getCode();
+           
+            return redirect()->route('CDHFramework.index')
+            ->with('del-error', true)
+            ->with(compact('error'));
+        }
     }
 }

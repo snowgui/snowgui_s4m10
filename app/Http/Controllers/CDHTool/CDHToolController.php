@@ -57,6 +57,16 @@ class CDHToolController extends Controller
 
     public function destroy($id)
     {
-        //
+        try{
+            Tool::find($id)->delete();
+            return redirect()->route('CDHTool.index')->with('destroyed', true);
+        }catch(\Exception $ex)
+        {
+            $error = $ex->getCode();
+           
+            return redirect()->route('CDHTool.index')
+            ->with('del-error', true)
+            ->with(compact('error'));
+        }
     }
 }

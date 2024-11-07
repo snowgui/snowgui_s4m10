@@ -56,6 +56,16 @@ class CDHSoController extends Controller
 
     public function destroy($id)
     {
-        //
+        try{
+            SO::find($id)->delete();
+            return redirect()->route('CDHSo.index')->with('destroyed', true);
+        }catch(\Exception $ex)
+        {
+            $error = $ex->getCode();
+           
+            return redirect()->route('CDHSo.index')
+            ->with('del-error', true)
+            ->with(compact('error'));
+        }
     }
 }

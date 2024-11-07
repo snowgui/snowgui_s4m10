@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="wrapper wrapper-content animated fadeInRight ">
-<form action="{{ Route('CDHCategoria.update', $data->id) }}" class="form-validar form-horizontal" method="post" enctype="multipart/form-data">
+<form action="{{ Route('Book.update', $data->id) }}" class="form-validar form-horizontal" method="post" enctype="multipart/form-data">
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -14,10 +14,10 @@
             <div class="panel-body">
                 {{csrf_field()}}
                 {{method_field("PUT")}}
-                @include('admin.cdh_categoria._form')
+                @include('admin.book._form')
             </div>
             <div class="panel-footer text-center">
-                <a class="btn btn-danger btn-voltar" href="{{route('CDHCategoria.index')}}">Voltar</a>
+                <a class="btn btn-danger btn-voltar" href="{{route('Book.index')}}">Voltar</a>
                 
                 <button onclick="confirm_submit()" class="btn btn-primary">Atualizar &nbsp;<i class="fa fa-save"></i> &nbsp;<span id="id_spinner_start"class="loading open-circle"></span> </button> 
                     

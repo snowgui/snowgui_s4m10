@@ -179,7 +179,19 @@ class UserController extends Controller{
     }
 
     public function destroy($id){
-        //
+        try
+        {  
+            $user->find($id)->delete();
+            return redirect()->route('user.index')->with('destroyed', true);
+
+        }catch(\Exception $ex)
+        {
+            $error = $ex->getCode();
+           
+            return redirect()->route('user.index')
+            ->with('del-error', true)
+            ->with(compact('error'));
+        }
     }
 
     

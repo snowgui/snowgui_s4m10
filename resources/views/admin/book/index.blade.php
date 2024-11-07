@@ -37,6 +37,8 @@
                                 <th>pages</th>
                                 <th>read</th>
                                 <th>current page</th>
+                                <th>start read</th>
+                                <th>end read</th>
                                 <th>img</th>
                                 <th>Editar</th>
                                 <th>Remover</th>                    
@@ -77,7 +79,14 @@
                                         {{$x->current_page}}
                                      </td>
 
-
+                                     <td>
+                                        {{ \Carbon\Carbon::parse($x->start_date_read)->format('d/m/Y') }}
+                                     </td>
+                                    
+                                     <td>
+                                        {{ \Carbon\Carbon::parse($x->end_date_read)->format('d/m/Y') }}
+                                    </td>   
+                                                                             
                                      <td>
                                         {{$x->img}}
                                      </td>
@@ -139,7 +148,7 @@
                 dom: 'lTfgitp',
                 columnDefs: [
                 {
-                    "targets": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                     "className": "text-center"
                 }, 
                 {

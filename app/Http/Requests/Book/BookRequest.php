@@ -15,7 +15,7 @@ class BookRequest extends FormRequest
         return [
                 "name" => "required|max:42"  
                 ,"pages" => "required|min:1"
-                ,"read"=> "required"                        
+                //,"read"=> "required"                        
         ];  
     }
 }
