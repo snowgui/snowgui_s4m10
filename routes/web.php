@@ -58,4 +58,6 @@ Route::prefix('s4m01')->middleware('auth')->group(function () {
 
     Route::resource('Book', BookController::class);
 
+    Route::resource('Task', TaskController::class);
+
 });
