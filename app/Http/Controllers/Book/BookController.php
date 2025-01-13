@@ -16,7 +16,7 @@ class BookController extends Controller
     public function index()
     {
         $data = Book::all();
-
+        
         if(session("del-error"))
         {
             $error = session()->get("error");
@@ -41,6 +41,14 @@ class BookController extends Controller
     public function store(BookRequest $request)
     {
         $data = $request->all();
+ 
+        if($data["start_date_read"] != null){
+            $data["start_date_read"] = Carbon::createFromFormat('d/m/Y', $data["start_date_read"])->format('Y-m-d');
+        }
+    
+        if($data["end_date_read"] != null){
+            $data["end_date_read"] = Carbon::createFromFormat('d/m/Y', $data["end_date_read"])->format('Y-m-d');
+        }
 
         if(isset($data["read"])) $data["read"] = true;
         else $data["read"] = false;
@@ -63,6 +71,7 @@ class BookController extends Controller
     public function edit($id)
     {
         $data = Book::find($id);
+
         return view("admin.book.edit", compact("data"));
     }
 
@@ -71,12 +80,15 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, $id)
     {
-        $data = $request->all();
-  
+        $data = $request->all();  
 
-        $data["start_date_read"] = Carbon::createFromFormat('d/m/Y', $data["start_date_read"])->format('Y-m-d');
-
-        $data["end_date_read"] = Carbon::createFromFormat('d/m/Y', $data["end_date_read"])->format('Y-m-d');
+        if($data["start_date_read"] != null){
+            $data["start_date_read"] = Carbon::createFromFormat('d/m/Y', $data["start_date_read"])->format('Y-m-d');
+        }
+    
+        if($data["end_date_read"] != null){
+            $data["end_date_read"] = Carbon::createFromFormat('d/m/Y', $data["end_date_read"])->format('Y-m-d');
+        }
 
         if(isset($data["read"])) $data["read"] = true;
         else $data["read"] = false;

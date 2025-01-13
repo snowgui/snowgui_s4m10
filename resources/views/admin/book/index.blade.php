@@ -80,11 +80,15 @@
                                      </td>
 
                                      <td>
-                                        {{ \Carbon\Carbon::parse($x->start_date_read)->format('d/m/Y') }}
+                                        @if($x->start_date_read != null)
+                                            {{ \Carbon\Carbon::parse($x->start_date_read)->format('d/m/Y') }}
+                                        @endif
                                      </td>
                                     
                                      <td>
-                                        {{ \Carbon\Carbon::parse($x->end_date_read)->format('d/m/Y') }}
+                                        @if($x->end_date_read != null)
+                                            {{ \Carbon\Carbon::parse($x->end_date_read)->format('d/m/Y') }}
+                                        @endif
                                     </td>   
                                                                              
                                      <td>

@@ -48,7 +48,11 @@
                 <div class="form-group" id="data_1">
                     <label class="font-normal">Start Read</label>
                     <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="start_date_read" id="start_date_read" value="{{\Carbon\Carbon::parse(@$data->start_date_read)->format('d/m/Y')}}">
+                        @if(@$data->start_date_read != null)
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="start_date_read" id="start_date_read" value="{{\Carbon\Carbon::parse(@$data->start_date_read)->format('d/m/Y')}}">
+                        @else
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="start_date_read" id="start_date_read" value="">
+                        @endif
                     </div>
                 </div>
                 {{-- <div class="form-group">
@@ -60,7 +64,11 @@
                 <div class="form-group" id="data_2">
                     <label class="font-normal">End Read</label>
                     <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="end_date_read" id="end_date_read" value="{{\Carbon\Carbon::parse(@$data->end_date_read)->format('d/m/Y')}}">
+                        @if(@$data->end_date_read != null)
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="end_date_read" id="end_date_read" value="{{\Carbon\Carbon::parse(@$data->end_date_read)->format('d/m/Y')}}">
+                        @else
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" name="end_date_read" id="end_date_read" value="">
+                        @endif
                     </div>
                 </div>
             
